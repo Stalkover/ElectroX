@@ -1,0 +1,29 @@
+<%- include('include/_header_admin') -%>
+
+<div class="container">
+    <h1>User list</h1>
+</div>
+<table class="table container">
+    <thead class="thead-dark">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <div class="container flex-grow-1 container">
+        <tbody>
+        <% for(var i = 0; i < user.length; i++){ %>
+                <tr>
+                    <td><%= user[i]._id%></td>
+                    <td><%= user[i].name %></td>
+                    <td><%= user[i].email %></td>
+                    <td><a href="/admin/delete_user?id=<%=user[i]._id%>&id2=<%=id%>">Delete</a></td>
+                </tr>
+        <% } %>
+        </tbody>
+    </div>
+</table>
+
+<%- include('include/_footer') -%>

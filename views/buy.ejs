@@ -1,0 +1,14 @@
+<%- include('include/_header') -%>
+
+<div class="container my-2">
+    <h1 class="my-4">Total cost: <%= sum + " ₸"%></h1>
+    <form>
+        <label for="ccn" class="my-2">Credit card number:</label>
+        <input id="ccn" type="tel" class="form-control" name="ccn" inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx" required>
+        <label for="cvc">CVC code:</label>
+        <input id="cvc" type="tel" class="form-control" name="cvc" required>
+    </form>
+    <a class="btn btn-primary my-4" href="/main/profile/cart/buy?id=<%= id%>" role="button">Buy</a>
+</div>
+
+<%- include('include/_footer') -%>

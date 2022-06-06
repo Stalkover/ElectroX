@@ -1,0 +1,50 @@
+<%- include('include/_header') -%>
+
+<% function check(cart, id){
+    for(let i = 0; i < cart.length; i++){
+        if(cart[i].user == id){
+            return i;
+        }
+    }
+    return -1;
+}%>
+
+<div class="container my-4">
+    <h1>Shopping cart</h1>
+</div>
+<table class="table container">
+    <thead class="thead-dark">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Cost</th>
+        <th>Amount</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <div class="container flex-grow-1 container">
+        <tbody>
+        <% for(var i = 0; i < user.length; i++){ %>
+            <% for(var i2 = 0; i2 < user[i].cart.length; i2++){ %>
+            <tr>
+                <td><%= i2 + 1%></td>
+                <td><%= user[i].cart[i2].name %></td>
+                <td><%= user[i].cart[i2].cost*user[i].cart[i2].cart[check(user[i].cart[i2].cart, id)].count + " ₸" %></td>
+                <td>
+                    <a href="/main/change_cart?id=<%= id%>&id2=<%= user[i].cart[i2]._id%>&count=1"><i class="fa-solid fa-plus"></i></a>
+                    <%= user[i].cart[i2].cart[check(user[i].cart[i2].cart, id)].count%>
+                    <a href="/main/change_cart?id=<%= id%>&id2=<%= user[i].cart[i2]._id%>&count=-1"><i class="fa-solid fa-minus"></i></a>
+                </td>
+                <td><a href="/main/profile/cart/delete?id=<%= user[i]._id%>&id2=<%= user[i].cart[i2]._id %>">Delete</a></td>
+            </tr>
+            <% } %>
+        <% } %>
+        </tbody>
+    </div>
+</table>
+<div class="container">
+    <h2 class="my-3">Total cost: <%= sum + " ₸"%></h2>
+    <a class="btn btn-primary" href="/main/profile/cart/buy_page?id=<%= id%>" role="button">Buy</a>
+</div>
+
+<%- include('include/_footer') -%>

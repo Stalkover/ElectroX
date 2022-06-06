@@ -1,0 +1,35 @@
+<%- include('include/_header') -%>
+    <div class="container my-4">
+        <h1>Products</h1>
+    </div>
+    <table class="table container">
+        <thead class="thead-dark">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Cost</th>
+            <th>Stock</th>
+            <th>Add</th>
+        </tr>
+        </thead>
+        <div class="container flex-grow-1 container">
+            <tbody>
+            <% for(var i = 0; i < prods.length; i++){ %>
+                <tr>
+                    <td><%= i + 1%></td>
+                    <td><%= prods[i].name %></td>
+                    <td><%= prods[i].cost + " ₸"%></td>
+                    <td><%= prods[i].stock%></td>
+                    <td>
+                        <% let query = "/main/add_cart?id=" + id + "&id2=" + prods[i]._id%>
+                        <form action=<%=query%> method="POST">
+                            <button type="submit">ADD</button>
+                        </form>
+                    </td>
+                </tr>
+            <% } %>
+            </tbody>
+        </div>
+    </table>
+
+<%- include('include/_footer') -%>
